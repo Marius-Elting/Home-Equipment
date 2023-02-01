@@ -1,0 +1,102 @@
+.OverviewWrapper {
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.OverviewWrapper .SingleElementWrapper {
+    display: flex;
+    width: 600px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px gray;
+    justify-content: space-between;
+
+}
+
+.SingleElementWrapper img {
+    border-radius: 20px 0 0 20px;
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.SingleElementWrapper .TextWrapper {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.SingleElementWrapper .TextWrapper h3 {
+    /* margin: 2rem 0; */
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.OverviewWrapper .SingleElementWrapper button {
+    display: block;
+    padding: 10px 20px;
+    align-self: flex-end;
+    border-radius: 20px 0 20px 0;
+    border: none;
+    box-shadow: -1px -1px 5px gray;
+    font-size: 1.5rem;
+
+}
+
+.OverviewWrapper .SingleElementWrapper button:hover {
+
+    cursor: pointer;
+    box-shadow: -1px -1px 10px gray;
+}
+
+
+.OverviewWrapper .SingleElementWrapperForm {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    padding: 10px;
+}
+
+.OverviewWrapper .SingleElementWrapperForm input,
+.OverviewWrapper .SingleElementWrapperForm select,
+.OverviewWrapper .SingleElementWrapperForm textarea {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 5px gray;
+    resize: none;
+}
+
+.OverviewWrapper .SingleElementWrapperForm input:hover,
+.OverviewWrapper .SingleElementWrapperForm select:hover,
+.OverviewWrapper .SingleElementWrapperForm textarea:hover {
+
+    box-shadow: 0 0 10px gray;
+}
+
+.OverviewWrapper .SingleElementWrapperForm button[type=submit] {
+    font-size: 1.5rem;
+    translate: 10px 10px;
+}
+
+.OverviewWrapper .SingleElementWrapperForm button[type=button] {
+    font-size: 1.5rem;
+    translate: -10px 10px;
+
+    border-radius: 0 20px 0 20px;
+
+}
+
+.OverviewWrapper .SingleElementWrapperForm div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

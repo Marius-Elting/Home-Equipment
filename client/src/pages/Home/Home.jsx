@@ -2,10 +2,10 @@ import { Link } from "react-router-dom"
 import "./Home.css"
 import InputPopUp from "../../components/inputPopUp/InputPopUp"
 
-const Home = ({ showPopUp }) => {
+const Home = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
     return (
         <main className="HomeWrapper">
-            {showPopUp && <InputPopUp />}
+            {showPopUp && <InputPopUp setPopUp={setPopUp} setShowAlert={setShowAlert} setalertSetting={setalertSetting} />}
             <section className="Home-UpperSection">
                 <h1>My Furniture</h1>
             </section>
