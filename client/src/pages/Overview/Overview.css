@@ -60,8 +60,11 @@
 .OverviewWrapper .SingleElementWrapperForm {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 450px;
     padding: 10px;
+    padding-top: 30px;
+    position: relative;
+    justify-content: flex-start;
 }
 
 .OverviewWrapper .SingleElementWrapperForm input,
@@ -73,26 +76,40 @@
     border: none;
     box-shadow: 0 0 5px gray;
     resize: none;
+    margin-bottom: .5rem;
+}
+
+.OverviewWrapper .SingleElementWrapperForm label {
+    font-size: 1.2rem;
 }
 
 .OverviewWrapper .SingleElementWrapperForm input:hover,
 .OverviewWrapper .SingleElementWrapperForm select:hover,
 .OverviewWrapper .SingleElementWrapperForm textarea:hover {
-
     box-shadow: 0 0 10px gray;
 }
 
-.OverviewWrapper .SingleElementWrapperForm button[type=submit] {
+.OverviewWrapper .SingleElementWrapperForm .submitButton {
     font-size: 1.5rem;
-    translate: 10px 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
-.OverviewWrapper .SingleElementWrapperForm button[type=button] {
+.OverviewWrapper .SingleElementWrapperForm .exitButton {
     font-size: 1.5rem;
-    translate: -10px 10px;
-
     border-radius: 0 20px 0 20px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
 
+.OverviewWrapper .SingleElementWrapperForm .deleteButton {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 20px 0 20px;
 }
 
 .OverviewWrapper .SingleElementWrapperForm div {

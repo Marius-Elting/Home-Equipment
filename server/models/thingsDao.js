@@ -28,7 +28,18 @@ export const editOneThing = async (editedThing, id) => {
         )
         return pointer
     } catch (err) {
-        console.log(err)
+        return err
+    }
+}
+
+
+export const deleteOneThing = async (id) => {
+    console.log(id)
+    try {
+        const db = await getDb()
+        const pointer = await db.collection("Things").deleteOne({ "_id": ObjectId(id) })
+        return pointer
+    } catch (err) {
         return err
     }
 }

@@ -59,15 +59,58 @@ const Overview = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
                     default: setalertSetting({ message: data.error, type: "Error" })
                 }
                 setEditMode(false)
+                setTimeout(() => {
+                    setShowAlert(false)
+                }, 2000)
             })
             .catch(err => {
                 setalertSetting({ message: "Editing Failed", type: "Error" })
+                setTimeout(() => {
+                    setShowAlert(false)
+                }, 2000)
             })
 
-        setTimeout(() => {
-            setShowAlert(false)
-        }, 2000)
+
     }
+
+    const handleDelete = (mongoId) => {
+        setShowAlert(true)
+        setalertSetting({ message: "Deleting Element", type: "Loading" })
+
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/deleteHomeEquipment`, {
+            method: "DELETE",
+            headers: {
+
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ mongoId: mongoId })
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                setStuff(data.data.filter(single => single.size === category))
+                switch (data.code) {
+                    case 500: setalertSetting({ message: data.error, type: "Error" })
+                        break
+                    case 200: setalertSetting({ message: data.error, type: "Success" })
+                        break
+                    case 400: setalertSetting({ message: data.error, type: "Error" })
+                        break
+                    default: setalertSetting({ message: data.error, type: "Error" })
+                }
+                setEditMode(false)
+                setTimeout(() => {
+                    setShowAlert(false)
+                }, 2000)
+            })
+            .catch(err => {
+                setalertSetting({ message: "Deleting Failed", type: "Error" })
+                setTimeout(() => {
+                    setShowAlert(false)
+                }, 2000)
+            })
+    }
+
     if (!stuff) return
 
 
@@ -79,11 +122,13 @@ const Overview = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
                 if (editMode === data._id) {
                     return (
                         <form className="SingleElementWrapper SingleElementWrapperForm" onSubmit={(e) => handleFormSubmit(e, data._id, data.img)}>
+                            <button onClick={() => handleDelete(data._id)} type="button" className="deleteButton">Delete</button>
                             <label htmlFor="title">Title</label>
                             <input defaultValue={data.title} type="text" id="title" placeholder="title" name="title"></input>
                             <label htmlFor="room">Room</label>
                             <input defaultValue={data.room} type="text" id="room" placeholder="room" name="room"></input>
-                            <select defaultValue={data.size} name="size">
+                            <label htmlFor="size">size</label>
+                            <select defaultValue={data.size} id="size" name="size">
                                 <option name="size" value="small">Small</option>
                                 <option name="size" value="notsobig">Not so big</option>
                                 <option name="size" value="big">Big</option>
@@ -93,9 +138,8 @@ const Overview = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
                             <label htmlFor="image">Image</label>
                             <input fileName={data.img} type="file" id="image" placeholder="image" name="thingImage"></input>
                             <div>
-                                <button type="button" onClick={() => setEditMode(false)}>Exit</button>
-                                <button type="submit">Submit</button>
-
+                                <button className="exitButton" type="button" onClick={() => setEditMode(false)}>Exit</button>
+                                <button className="submitButton" type="submit">Submit</button>
                             </div>
                         </form>
                     )
