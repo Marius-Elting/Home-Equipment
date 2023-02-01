@@ -19,12 +19,12 @@ const InputPopUp = ({ setPopUp, setalertSetting, setShowAlert }) => {
                     case 500: setalertSetting({ message: res.error, type: "Error" })
                         break
                     case 200: setalertSetting({ message: res.error, type: "Success" })
+                        setPopUp(false)
                         break
                     case 400: setalertSetting({ message: res.error, type: "Error" })
                         break
                     default: setalertSetting({ message: res.error, type: "Error" })
                 }
-                setPopUp(false)
             })
             .catch(err => {
                 setalertSetting({ message: "Adding Failed", type: "Error" })
