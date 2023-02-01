@@ -25,8 +25,7 @@ const Overview = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
                 }
 
                 setStuff(data.data.filter(single => single.size === category))
-
-
+                console.log(data)
                 setTimeout(() => {
                     setShowAlert(false)
                 }, 1000)
@@ -79,7 +78,7 @@ const Overview = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
             {stuff.map((data, index) => {
                 if (editMode === data._id) {
                     return (
-                        <form className="SingleElementWrapper SingleElementWrapperForm" onSubmit={(e) => handleFormSubmit(e, data._id, data.image)}>
+                        <form className="SingleElementWrapper SingleElementWrapperForm" onSubmit={(e) => handleFormSubmit(e, data._id, data.img)}>
                             <label htmlFor="title">Title</label>
                             <input defaultValue={data.title} type="text" id="title" placeholder="title" name="title"></input>
                             <label htmlFor="room">Room</label>
@@ -92,7 +91,7 @@ const Overview = ({ showPopUp, setPopUp, setalertSetting, setShowAlert }) => {
                             <label htmlFor="message">Message</label>
                             <textarea defaultValue={data.message} type="text" id="message" placeholder="message" name="message"></textarea>
                             <label htmlFor="image">Image</label>
-                            <input fileName={data.image} type="file" id="image" placeholder="image" name="thingImage"></input>
+                            <input fileName={data.img} type="file" id="image" placeholder="image" name="thingImage"></input>
                             <div>
                                 <button type="button" onClick={() => setEditMode(false)}>Exit</button>
                                 <button type="submit">Submit</button>
