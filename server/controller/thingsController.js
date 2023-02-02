@@ -24,7 +24,9 @@ export const addNewThing = async (req, res) => {
         message: req.body.message,
         size: req.body.size
     }
-    if (req.body.size !== "small" || req.body.size !== "notsobig" || req.body.size !== "big") {
+    if (req.body.size === "small" || req.body.size === "notsobig" || req.body.size === "big") {
+
+    } else {
         res.status(500).json({ error: "STOP EDITING MY CODE", code: 500 })
         await fs.promises.unlink(`./${newThing.img}`)
         return
