@@ -24,9 +24,7 @@ export const addNewThing = async (req, res) => {
         message: req.body.message,
         size: req.body.size
     }
-    if (req.body.size === "small" || req.body.size === "notsobig" || req.body.size === "big") {
-
-    } else {
+    if (req.body.size !== "small" && req.body.size !== "notsobig" && req.body.size !== "big") {
         res.status(500).json({ error: "STOP EDITING MY CODE", code: 500 })
         await fs.promises.unlink(`./${newThing.img}`)
         return
@@ -57,6 +55,11 @@ export const editThing = async (req, res) => {
         editedThing.img = req.body.oldPic
     } else {
         editedThing.img = req.file.path
+    }
+
+    if (req.body.size !== "small" && req.body.size !== "notsobig" && req.body.size !== "big") {
+        res.status(500).json({ error: "STOP EDITING MY CODE", code: 500 })
+        return
     }
 
     if (!editedThing.title || !editedThing.room || !editedThing.message || !editedThing.size) {
